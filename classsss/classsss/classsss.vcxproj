@@ -88,6 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,6 +143,7 @@
     <ClCompile Include="classsss.cpp" />
     <ClCompile Include="C_pipe.cpp" />
     <ClCompile Include="C_nps.cpp" />
+    <ClCompile Include="General_functions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header.h" />

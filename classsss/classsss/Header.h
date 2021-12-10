@@ -7,20 +7,20 @@
 #include <cstring>
 #include <string>
 #include <algorithm>
+#include <unordered_map>
 using namespace std;
+
 class Pipe {
 public:
-	int count_id;
 	int id;
 	double lenth;
 	double diam;
 	bool ready;
 	Pipe();
-	int True_id(int &count_id, vector<Pipe> pipe_vec);
-	void Create(Pipe& pipe, vector<Pipe>& pipe_vec, int& count_id);
+	int True_id(int& count_id, vector<Pipe>&pipe_vec);
+	void Create(int& count_id,vector<Pipe>&pipe_vec);
 	void Print();
-	bool Search_p(int& s_id, vector<Pipe>& pipe_vec);
-	void Change_pipe();
+	void Change_p();
 private: 
 }; 
 istream& operator >>(istream& in, Pipe& p);
@@ -36,15 +36,22 @@ public:
 	double loading;
 	string name;
 	Nps();
-	int True_id(int count_id, vector<Nps> nps_vec);
-	void Create(Nps& nps, vector<Nps>& nps_vec);
+	int True_id(int& count_id, vector<Nps> nps_vec);
+	void Create(int& count_id, vector<Nps>& nps_vec);
 	void Print();
-	void Change_n(int& l_bord, Nps& nps, vector<Nps>& nps_vec);
-	bool Search_n(int s_id, vector<Nps>& nps_vec);
+	void Change_n();
 private:
 };
 ostream& operator<<(ostream& out, const Nps& n);
 istream& operator>>(istream& in, Nps& n);
+
+//////////////////////////////////////////////////////////////////////////////
 void File_outer(const vector <Pipe>& pipe_vec, const vector<Nps>& nps_vec);
 void File_reader(vector <Pipe>& pipe_vec, vector<Nps>& nps_vec);
 double get_digit();
+void Change_pipes(vector<Pipe>& pipe_vec);
+void Change_npss(vector<Nps>& nps_vec);
+void Print_all(vector<Pipe>& pipe_vec,vector<Nps>& nps_vec);
+void Main_menu();
+void Delete_p(vector<Pipe>& pipe_vec);
+void Delete_n(vector<Nps>& nps_vec);

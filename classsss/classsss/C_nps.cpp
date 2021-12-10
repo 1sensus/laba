@@ -9,7 +9,7 @@ Nps::Nps()
 	loading = 0;
 	name = "";
 }
-int Nps::True_id(int count_id, vector<Nps> nps_vec)
+int Nps::True_id(int& count_id, vector<Nps> nps_vec)
 {
 	for (auto n : nps_vec)
 	{
@@ -17,8 +17,9 @@ int Nps::True_id(int count_id, vector<Nps> nps_vec)
 	}return count_id;
 }
 
-void Nps::Create(Nps& nps, vector<Nps>& nps_vec)
+void Nps::Create( int& count_id,vector<Nps>& nps_vec)
 {
+	Nps nps;
 	nps.id = True_id(count_id, nps_vec);
 	cout << "Введите название станции" << endl;
 	cin.ignore();
@@ -40,13 +41,15 @@ void Nps::Print()
 {
 	cout << "Id: " << id << "\tНазвание: " << name << "\tЗагруженность: " << loading << " %" << "( " << work_stations << " / " << all_stations << " )" << endl;
 }
-void Nps::Change_n(int& l_bord, Nps& nps, vector<Nps>& nps_vec)
+void Nps::Change_n()
 {
 	int x; do
 	{
-
+		system("cls");
+		Print();
 		cout << "Изменить:" << endl << "1.Название" << endl << "2.Работающие станции" << endl << "3.Общее количество станция" << endl << "0.Выход" << endl;
 		x = get_digit();
+		
 		switch (x)
 		{
 
@@ -54,48 +57,37 @@ void Nps::Change_n(int& l_bord, Nps& nps, vector<Nps>& nps_vec)
 		{
 			cout << "Название->" << endl;
 			cin.ignore();
-			getline(cin, nps.name);
+			getline(cin, name);
 			break;
 		}
 		case 2:
 		{
 			cout << "Введите количество работающих станций" << endl;
-			nps.work_stations = get_digit();
+			work_stations = get_digit();
+			while (work_stations > all_stations)
+			{
+				cout << "Ошибка ввода: общее количество станций должно быть меньше чем количество работающих станций" << endl;
+				cout << "Введите количество работающих станций" << endl;
+				work_stations = get_digit();
+			}
+			loading = work_stations / all_stations * 100;
 			break;
 		}
 		case 3:
 		{
 			cout << "Введите общее количество станций" << endl;
-			nps.all_stations = get_digit();
-			break;
-		}
-		while (nps.work_stations > nps.all_stations)
+			all_stations = get_digit();
+
+		
+		while (work_stations > all_stations)
 		{
 			cout << "Ошибка ввода: общее количество станций должно быть меньше чем количество работающих станций" << endl;
-			nps.work_stations = get_digit();
-			nps.all_stations = get_digit();
+			cout << "Введите общее количество станций" << endl;
+			all_stations = get_digit();
 		}
-		nps.loading = nps.work_stations / nps.all_stations * 100;
+		loading = work_stations / all_stations * 100;
+		break;
+		}
 		}
 	} while (x != 0);
-	nps_vec.erase(nps_vec.begin() + l_bord);
-	nps_vec.insert(nps_vec.begin() + l_bord, nps);
-}
-bool Nps::Search_n(int s_id, vector<Nps>& nps_vec)
-{
-	for (auto n : nps_vec) { if (n.id == s_id) { return true; } }
-}
-ostream& operator<<(ostream& out, const Nps& n)
-{
-	out << n.id << endl << n.name << endl << n.work_stations << endl << n.all_stations << endl << n.loading << endl;
-	return out;
-}
- istream& operator>>(istream& in, Nps& n)
-{
-	in >> n.id;
-	in >> n.name;
-	in >> n.work_stations;
-	in >> n.all_stations;
-	in >> n.loading;
-	return in;
 }

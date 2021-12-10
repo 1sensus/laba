@@ -6,18 +6,19 @@
 		 lenth = 0;
 		 diam = 0;
 		 ready = 0;
-		 count_id = 0;
 	}
 
-	int Pipe:: True_id(int& count_id, vector<Pipe> pipe_vec)
+	int Pipe::True_id(int& count_id, vector<Pipe>&pipe_vec)
 	{
-		for (auto &p : pipe_vec)
-		{
-			if (p.id + 1 > count_id) { count_id = p.id + 1; }
-		}return count_id;
+		for (auto &p : pipe_vec) {
+			if (p.id+1 > count_id) {count_id = p.id+1; };
+		}
+		return count_id;
 	}
-	void Pipe::Create(Pipe& pipe, vector<Pipe>& pipe_vec, int &count_id)
+	
+	void Pipe::Create(int& count_id,vector<Pipe>&pipe_vec)
 	{
+		Pipe pipe;
 		pipe.id = True_id(count_id, pipe_vec);
 		cout << "Длина ->  " << endl;
 		pipe.lenth = get_digit();
@@ -26,32 +27,14 @@
 		cout << "Статус ->  " << endl;
 		pipe.ready = get_digit();
 		pipe_vec.push_back(pipe);
+
 	}
 	void Pipe::Print()
 	{
-		cout << "Id: " << id << "\tДлина: " << lenth << "\tДиаметр: " << diam << "\tСтатус: " << ready << endl;
+		cout<<"Id:"<<id << "\tДлина: " << lenth << "\tДиаметр: " << diam << "\tСтатус: " << ready << endl;
 	}
-
-	bool Pipe:: Search_p(int& s_id, vector<Pipe>& pipe_vec)
+	void Pipe::Change_p()
 	{
-		for (auto &p : pipe_vec) { if (p.id == s_id) { return true; } else { return false; } }
-	}
-	
-	ostream&  operator <<(ostream& out, const Pipe& p)
-	{
-		out << p.id << endl << p.lenth << endl << p.diam << endl << p.ready << endl;
-		return out;
-	}
-	 istream& operator >>(istream& in, Pipe& p)
-	{
-		in >> p.id;
-		in >> p.lenth;
-		in >> p.diam;
-		in >> p.ready;
-		return in;
-	}
-	 void Pipe::Change_pipe()
-	 {
 		 int x;
 		 do {
 			 system("cls");
@@ -81,6 +64,4 @@
 			 }
 			 }
 		 } while (x != 0);
-	 }
-		
-	
+	}
