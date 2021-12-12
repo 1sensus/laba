@@ -55,3 +55,4 @@ void Print_all(vector<Pipe>& pipe_vec,vector<Nps>& nps_vec);
 void Main_menu();
 void Delete_p(vector<Pipe>& pipe_vec);
 void Delete_n(vector<Nps>& nps_vec);
+void All_Filter(vector<Pipe>& pipe_vec, vector<Nps>& nps_vec);

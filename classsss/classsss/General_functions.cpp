@@ -16,7 +16,39 @@ void Main_menu()
 	cout << "10. Фильтровать" << endl;
 	cout << "0. Выход" << endl;
 }
-
+void Filter_menu() 
+{
+	system("cls");
+	cout << "Что мы хотим делать?" << endl;
+	cout << "1.Сортировка труб" << endl;
+	cout << "2.Сортировка станций" << endl;
+	cout << "0.Назад" << endl;
+}
+void Filter_m_p()
+{
+	system("cls");
+	cout << "Что мы хотим делать?" << endl;
+	cout << "1.Сортировка по Id(>=)" << endl;
+	cout << "2.Сортировка по Id(<=)" << endl;
+	cout << "3.Сортировка по длине(>=)" << endl;
+	cout << "4.Сортировка по длине(<=)" << endl;
+	cout << "5.Сортировка по диаметру(>=)" << endl;
+	cout << "6.Сортировка по диаметру(<=)" << endl;
+	cout << "7.Сортировка по статусу" << endl;
+	cout << "0.Назад" << endl;	
+}
+void Filter_m_n()
+{
+	system("cls");
+	cout << "Что мы хотим делать?" << endl;
+	cout << "1.Сортировка по Id(>=)" << endl;
+	cout << "2.Сортировка по Id(<=)" << endl;
+	cout << "3.Сортировка по количеству станций(>=)" << endl;
+	cout << "4.Сортировка по количеству станций(<=)" << endl;
+	cout << "5.Сортировка по загруженности(>=)" << endl;
+	cout << "6.Сортировка по загруженности(<=)" << endl;
+	cout << "0.Назад" << endl;
+}
 double get_digit()
 {
 	double number;
@@ -206,6 +238,192 @@ void Delete_n(vector<Nps>&nps_vec)
 		cout << "Deleted!" << endl << "Razmer spiska: " << nps_vec.size() << endl;
 	}
 
+//Pipe
+template<typename T>
+using Filter = bool(*)(const Pipe& p, T param);
+bool Check_id_up(const Pipe& p, int param) { return p.id >= param; }
+bool Check_id_down(const Pipe& p, int param) { return p.id <= param; }
+bool Check_lenth_up(const Pipe& p, double param) { return p.lenth >= param; }
+bool Check_lenth_down(const Pipe& p, double param) { return p.lenth <= param; }
+bool Check_diam_up(const Pipe& p, double param) { return p.diam >= param; }
+bool Check_diam_down(const Pipe& p, double param) { return p.diam <= param; }
+bool Check_ready(const Pipe& p, bool param) { return p.ready == param; }
+template<typename T>
+vector <int> FindFilter(const vector<Pipe>& pipe_vec, Filter<T> f, T param)
+{
+	vector <int> result;
+	int i = 0;
+	for (auto& p : pipe_vec)
+	{
+		if (f(p, param))
+		{
+			result.push_back(i);
+		}++i;
+	}
+	return result;
+}
+void Filter_p(vector<Pipe>& pipe_vec)
+{
+	int var;
+	do {
+		Filter_m_p();
+		var = get_digit();
+		switch (var)
+		{
+			case 1:
+				{
+					int id_;
+					cout<<"Введите Id(>=)" << endl;
+					cin >> id_;
+					for (int i : FindFilter(pipe_vec, Check_id_up, id_))
+					{
+						pipe_vec[i].Print();
+					}
+					system("pause");
+					break;
+				}
+			case 2:
+				{
+					int id_;
+					cout << "Введите Id(<=)" << endl;
+					cin >> id_;
+					for (int i : FindFilter(pipe_vec, Check_id_down, id_))
+					{
+						pipe_vec[i].Print();
+					}
+					system("pause");
+					break;
+				}
+			case 3:
+				{
+					double lenth_;
+					cout << "Введите длину(>=)" << endl;
+					cin >> lenth_;
+					for (int i : FindFilter(pipe_vec, Check_lenth_up, lenth_))
+					{
+						pipe_vec[i].Print();
+					}
+					system("pause");
+					break;
+				}
+			case 4:
+				{
+					double lenth_;
+					cout << "Введите длину(<=)" << endl;
+					cin >> lenth_;
+					for (int i : FindFilter(pipe_vec, Check_lenth_down, lenth_))
+					{
+						pipe_vec[i].Print();
+					}
+					system("pause");
+					break;
+				}
+			case 5:
+				{
+					double diam_;
+					cout << "Введите диаметр(>=)" << endl;
+					cin >> diam_;
+					for (int i : FindFilter(pipe_vec, Check_diam_up, diam_))
+					{
+						pipe_vec[i].Print();
+					}
+					system("pause");
+					break;
+				}
+			case 6:
+				{
+					double diam_;
+					cout << "Введите диаметр(<=)" << endl;
+					cin >> diam_;
+					for (int i : FindFilter(pipe_vec, Check_diam_down, diam_))
+					{
+						pipe_vec[i].Print();
+					}
+					system("pause");
+					break;
+				}
+			case 7:
+				{
+					bool ready_;
+					cout << "Введите Статус(В ремонте = 0)" << endl;
+					cin >> ready_;
+					for (int i : FindFilter(pipe_vec, Check_ready, ready_))
+					{
+						pipe_vec[i].Print();
+					}
+					system("pause");
+					break;
+				}			
+		}
+
+	} while (var != 0);
+}
+
+//Nps
+template<typename B>
+using Filter_= bool(*)(const Nps&, B param);
+bool Check_id_up_n(const Nps& n, int param) { return n.id >= param; }
+bool Check_id_down_n(const Nps& n, int param) { return n.id <= param; }
+bool Check_allstation_count_up(const Nps& n, double param) { return n.all_stations >= param; }
+bool Check_allstation_count_down(const Nps& n, double param) { return n.all_stations <= param; }
+bool Check_load_up(const Nps& n, double param) { return n.loading >= param; }
+bool Check_load_down(const Nps& n, double param) { return n.loading <= param; }
+template<typename B>
+vector<int>FindFilte(const vector<Nps>& nps_vec, Filter_<B>f, B param)
+{
+	vector <int> result;
+	int i = 0;
+	for (auto& n : nps_vec)
+	{
+		if (f(n, param))
+		{
+			result.push_back(i);
+		}++i;
+	}
+	return result;
+}
+void Filter_n(vector<Nps>& nps_vec) 
+{
+	int var;
+	do 
+	{
+		Filter_m_n();
+		var = get_digit();
+		switch (var)
+		{
+			
+		case 1:
+			{
+				int id_;
+				cout << "Введите Id(>=)" << endl;
+				cin >> id_;
+				for (int i : FindFilte(nps_vec,Check_id_up_n, id_))
+				{
+					nps_vec[i].Print();
+				}
+				system("pause");
+				break;
+			}
+		}
+	} while (var != 0);
+}
+void All_Filter(vector<Pipe>& pipe_vec, vector<Nps>& nps_vec)
+{
+	int var;
+	do 
+	{
+		Filter_menu();
+		var = get_digit();
+		switch (var)
+		{
+			case 1:
+			{Filter_p(pipe_vec); }
+			break;
+			case 2:
+			{Filter_n(nps_vec); }
+		}
+	} while (var != 0);
+}
 void Print_all(vector<Pipe>& pipe_vec, vector<Nps>& nps_vec)
 {
 	cout << "Pipes->" << endl;
