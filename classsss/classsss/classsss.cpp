@@ -1,15 +1,13 @@
 ﻿#include <iostream>
 #include"Header.h"
+#include<unordered_map>
+//unordered_map,разбивка по файлам, статические id;
 
 int main()
 {
-	int count_id_p = 0;
-	int count_id_n = 0;
+	unordered_map<int, Pipe> pipe_umap = {};
+	unordered_map<int, Nps> nps_umap = {};
 	setlocale(LC_ALL, "ru");
-	Pipe pipe;
-	Nps nps;
-	vector<Pipe> pipe_vec = {};
-	vector<Nps> nps_vec = {};
 	int x;
 	do
 	{
@@ -19,56 +17,56 @@ int main()
 		{
 			case 1:
 			{
-				pipe.Create(count_id_p, pipe_vec);
+				Pipe::Create(pipe_umap);
 				break;
 			}
 			case 2:
-				nps.Create(count_id_n, nps_vec);
+				Nps::Create(nps_umap);
 				break;
 			case 3:
 			{
-				Print_all(pipe_vec,nps_vec);
+				Print_all(pipe_umap,nps_umap);
 				break;
 			}
 			case 4:
 			{
-				Change_pipes(pipe_vec);
+				//Change_pipes();
 				break;
 			}
 			case 5:
 			{
-				Change_npss(nps_vec);
+				//Change_npss();
 				break;
 			}
 			case 6:
 			{
-				File_outer(pipe_vec, nps_vec);
+				File_outer(pipe_umap, nps_umap);
 				break;
 			}
 			case 7:
 			{
-				File_reader(pipe_vec, nps_vec);
+				File_reader(pipe_umap,nps_umap);
 				break;
 			}
 			case 8:
 			{
-				Delete_p(pipe_vec);
+				//Delete_p();
 				system("pause");
 				break;
 			}
 			case 9:
 			{
-				Delete_n(nps_vec);
+				//Delete_n();
 				system("pause");
 				break;
 			}
 			case 10:
 			{
-				All_Filter(pipe_vec,nps_vec);
+				//All_Filter();
 				system("pause");
 				break;
 			}
 		}
-	} while (x != 0);
+	} while (x!= 0);
 }
 

@@ -1,4 +1,9 @@
 #include"Header.h"
+#include"H_Nps.h"
+#include"H_pipe.h"
+#include<iostream>
+typedef std::unordered_map<int, Pipe> UMap_p;
+typedef std::unordered_map<int, Nps> UMap_n;
 
 void Main_menu()
 {
@@ -67,7 +72,9 @@ double get_digit()
 	}
 	return number;
 }
-void File_outer(const vector <Pipe>& pipe_vec, const vector<Nps>& nps_vec)
+
+
+void File_outer(unordered_map<int, Pipe>& pipe_umap,unordered_map<int, Nps>& nps_umap)
 {
 	fstream file_out;
 	cout << "Введите название файла для сохранения" << endl;
@@ -83,24 +90,25 @@ void File_outer(const vector <Pipe>& pipe_vec, const vector<Nps>& nps_vec)
 	}
 	else
 	{
-		size_t a = size(pipe_vec);
-		size_t b = size(nps_vec);
+		size_t a = pipe_umap.size();
+		size_t b = nps_umap.size();
 		file_out << a << endl;
 		file_out << b << endl;
-		for (auto& pipe : pipe_vec)
+		file_out << Pipe::max_id<<endl;
+		file_out << Nps::max_id<<endl;
+		for (UMap_p::iterator it = pipe_umap.begin(); it != pipe_umap.end(); ++it)
 		{
-			file_out << pipe;
+			file_out << (it->second);
 		}
-		for (auto& nps : nps_vec)
+		for (UMap_n::iterator it = nps_umap.begin(); it != nps_umap.end(); ++it)
 		{
-			file_out << nps;
+			file_out << (it->second);
 		}
-		cout << "writen" << endl;
 
 	}
 	file_out.close();
 }
-void File_reader(vector <Pipe>& pipe_vec, vector<Nps>& nps_vec)
+void File_reader(unordered_map<int, Pipe>& pipe_umap, unordered_map<int, Nps>& nps_umap)
 {
 
 	ifstream read_file;
@@ -114,25 +122,26 @@ void File_reader(vector <Pipe>& pipe_vec, vector<Nps>& nps_vec)
 	if (!read_file.is_open()) { cout << "Ошибка!!!"; }
 	else
 	{
-		pipe_vec.clear();
-		nps_vec.clear();
+		pipe_umap.clear();
+		nps_umap.clear();
 		int kol_vo_pipes, kol_vo_npss;
 		read_file >> kol_vo_pipes;
 		read_file >> kol_vo_npss;
+		read_file >> Pipe::max_id;
+		read_file >> Nps::max_id;
 		while (!read_file.eof())
 		{
 			for (int i = 0; i < kol_vo_pipes; ++i)
 			{
-				Pipe pipe = {};
+				Pipe pipe;
 				read_file >> pipe;
-				pipe_vec.push_back(pipe);
-
+				pipe_umap.emplace(pipe.id,pipe);
 			}
 			for (int i = 0; i < kol_vo_npss; ++i)
 			{
-				Nps nps = {};
+				Nps nps;
 				read_file >> nps;
-				nps_vec.push_back(nps);
+				nps_umap.emplace(nps.id,nps);
 			}break;
 		}cout << "file read" << endl; read_file.close();
 	}
@@ -424,18 +433,19 @@ void All_Filter(vector<Pipe>& pipe_vec, vector<Nps>& nps_vec)
 		}
 	} while (var != 0);
 }
-void Print_all(vector<Pipe>& pipe_vec, vector<Nps>& nps_vec)
+//typedef std::unordered_map<int, Pipe> UMap_p;
+//typedef std::unordered_map<int, Nps> UMap_n;
+void Print_all(unordered_map<int,Pipe>& pipe_umap, unordered_map<int,Nps>& nps_umap)
 {
 	cout << "Pipes->" << endl;
-	for (Pipe& p : pipe_vec)
+	//
+	for (UMap_p::iterator it = pipe_umap.begin(); it != pipe_umap.end();++it)
 	{
-		p.Print();
+		it->second.Print();
 	}
 	cout << "Npss->" << endl;
-	for (Nps& n : nps_vec)
-	{
-		n.Print();
-	}
+	//
+	for (UMap_n::iterator it = nps_umap.begin(); it != nps_umap.end(); ++it) { it->second.Print(); }
 	system("pause");
 }
 ostream& operator<<(ostream& out, const Nps& n)

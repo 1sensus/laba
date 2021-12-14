@@ -1,4 +1,5 @@
 #include"Header.h"
+#include"H_pipe.h"
 
 	Pipe::Pipe()
 	{
@@ -6,28 +7,19 @@
 		 lenth = 0;
 		 diam = 0;
 		 ready = 0;
-	}
-
-	int Pipe::True_id(int& count_id, vector<Pipe>&pipe_vec)
-	{
-		for (auto &p : pipe_vec) {
-			if (p.id+1 > count_id) {count_id = p.id+1; };
-		}
-		return count_id;
-	}
-	
-	void Pipe::Create(int& count_id,vector<Pipe>&pipe_vec)
+	}	
+	int Pipe::max_id = -1;
+	void Pipe::Create(unordered_map<int, Pipe>& pipe_umap)
 	{
 		Pipe pipe;
-		pipe.id = True_id(count_id, pipe_vec);
+		pipe.id = ++max_id;
 		cout << "Длина ->  " << endl;
 		pipe.lenth = get_digit();
 		cout << "Диаметр ->  " << endl;
 		pipe.diam = get_digit();
 		cout << "Статус ->  " << endl;
 		pipe.ready = get_digit();
-		pipe_vec.push_back(pipe);
-
+		pipe_umap.emplace(pipe.id,pipe);
 	}
 	void Pipe::Print()
 	{

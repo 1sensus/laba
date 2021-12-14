@@ -1,26 +1,18 @@
 #include"Header.h"
-
+#include"H_Nps.h"
 Nps::Nps()
 {
-	count_id = 0;
 	id = 0;
 	work_stations = 0;
 	all_stations = 0;
 	loading = 0;
 	name = "";
 }
-int Nps::True_id(int& count_id, vector<Nps> nps_vec)
-{
-	for (auto n : nps_vec)
-	{
-		if (n.id + 1 > count_id) { count_id = n.id + 1; }
-	}return count_id;
-}
-
-void Nps::Create( int& count_id,vector<Nps>& nps_vec)
+int Nps::max_id = -1;
+void Nps::Create(unordered_map<int, Nps>& nps_umap)
 {
 	Nps nps;
-	nps.id = True_id(count_id, nps_vec);
+	nps.id =++max_id ;
 	cout << "¬ведите название станции" << endl;
 	cin.ignore();
 	getline(cin, nps.name);
@@ -35,7 +27,7 @@ void Nps::Create( int& count_id,vector<Nps>& nps_vec)
 		nps.all_stations = get_digit();
 	}
 	nps.loading = nps.work_stations / nps.all_stations * 100;
-	nps_vec.push_back(nps);
+	nps_umap.emplace(nps.id,nps);
 }
 void Nps::Print()
 {
