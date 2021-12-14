@@ -57,3 +57,23 @@
 			 }
 		 } while (x != 0);
 	}
+
+	bool Pipe::Get_ready() const
+	{
+		return ready;
+	}
+
+	double Pipe::Get_diam() const
+	{
+		return diam;
+	}
+
+	double Pipe::Get_lenth() const
+	{
+		return lenth;
+	}
+
+	int Pipe::Get_id() const
+	{
+		return id;
+	}

@@ -1,21 +1,85 @@
-﻿  General_functions.cpp
+﻿  classsss.cpp
+C:\Users\student\Desktop\laba\classsss\classsss\classsss.cpp(15,16): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  C_pipe.cpp
+C:\Users\student\Desktop\laba\classsss\classsss\C_pipe.cpp(36,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  C_nps.cpp
+C:\Users\student\Desktop\laba\classsss\classsss\C_nps.cpp(12,1): error C2511: 'int Nps::Get_id(void)': overloaded member function not found in 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(5): message : see declaration of 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\C_nps.cpp(13,9): error C2597: illegal reference to non-static member 'Nps::id'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(20): message : see declaration of 'Nps::id'
+C:\Users\student\Desktop\laba\classsss\classsss\C_nps.cpp(41,1): error C2511: 'double Nps::Get_work_stations(void)': overloaded member function not found in 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(5): message : see declaration of 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\C_nps.cpp(42,9): error C2597: illegal reference to non-static member 'Nps::work_stations'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(21): message : see declaration of 'Nps::work_stations'
+C:\Users\student\Desktop\laba\classsss\classsss\C_nps.cpp(51,16): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Desktop\laba\classsss\classsss\C_nps.cpp(96,1): error C2511: 'double Nps::Get_all_stations(void)': overloaded member function not found in 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(5): message : see declaration of 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\C_nps.cpp(97,9): error C2597: illegal reference to non-static member 'Nps::all_stations'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(22): message : see declaration of 'Nps::all_stations'
+C:\Users\student\Desktop\laba\classsss\classsss\C_nps.cpp(101,1): error C2511: 'double Nps::Get_loading(void)': overloaded member function not found in 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(5): message : see declaration of 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\C_nps.cpp(102,9): error C2597: illegal reference to non-static member 'Nps::loading'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(23): message : see declaration of 'Nps::loading'
+  General_functions.cpp
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(142,25): error C2248: 'Nps::id': cannot access private member declared in class 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(20): message : see declaration of 'Nps::id'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(5): message : see declaration of 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(150,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(152,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(154,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(157,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(159,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(161,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(172,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(174,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(176,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(179,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(181,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(183,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(194,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(196,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(198,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(201,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(203,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(205,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(224,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(226,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(231,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(233,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(279,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(400,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(425,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  classsss.vcxproj -> C:\Users\student\Desktop\laba\classsss\Debug\classsss.exe
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(221,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(223,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(228,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(230,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(275,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(370,55): error C2248: 'Nps::id': cannot access private member declared in class 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(20): message : see declaration of 'Nps::id'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(5): message : see declaration of 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(371,57): error C2248: 'Nps::id': cannot access private member declared in class 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(20): message : see declaration of 'Nps::id'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(5): message : see declaration of 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(372,70): error C2248: 'Nps::all_stations': cannot access private member declared in class 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(22): message : see declaration of 'Nps::all_stations'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(5): message : see declaration of 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(373,72): error C2248: 'Nps::all_stations': cannot access private member declared in class 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(22): message : see declaration of 'Nps::all_stations'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(5): message : see declaration of 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(374,58): error C2248: 'Nps::loading': cannot access private member declared in class 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(23): message : see declaration of 'Nps::loading'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(5): message : see declaration of 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(375,60): error C2248: 'Nps::loading': cannot access private member declared in class 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(23): message : see declaration of 'Nps::loading'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(5): message : see declaration of 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(396,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(421,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(451,50): error C2248: 'Nps::work_stations': cannot access private member declared in class 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(21): message : see declaration of 'Nps::work_stations'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(5): message : see declaration of 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(451,77): error C2248: 'Nps::all_stations': cannot access private member declared in class 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(22): message : see declaration of 'Nps::all_stations'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(5): message : see declaration of 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(451,103): error C2248: 'Nps::loading': cannot access private member declared in class 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(23): message : see declaration of 'Nps::loading'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(5): message : see declaration of 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(456,9): error C2248: 'Nps::id': cannot access private member declared in class 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(20): message : see declaration of 'Nps::id'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(5): message : see declaration of 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(458,9): error C2248: 'Nps::work_stations': cannot access private member declared in class 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(21): message : see declaration of 'Nps::work_stations'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(5): message : see declaration of 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(459,9): error C2248: 'Nps::all_stations': cannot access private member declared in class 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(22): message : see declaration of 'Nps::all_stations'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(5): message : see declaration of 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\General_functions.cpp(460,9): error C2248: 'Nps::loading': cannot access private member declared in class 'Nps'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(23): message : see declaration of 'Nps::loading'
+C:\Users\student\Desktop\laba\classsss\classsss\H_Nps.h(5): message : see declaration of 'Nps'
+  Generating Code...

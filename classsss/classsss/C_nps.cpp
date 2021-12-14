@@ -8,6 +8,10 @@ Nps::Nps()
 	loading = 0;
 	name = "";
 }
+int Nps::Get_id()const
+{
+	return id;
+}
 int Nps::max_id = -1;
 void Nps::Create(unordered_map<int, Nps>& nps_umap)
 {
@@ -32,6 +36,10 @@ void Nps::Create(unordered_map<int, Nps>& nps_umap)
 void Nps::Print()
 {
 	cout << "Id: " << id << "\tНазвание: " << name << "\tЗагруженность: " << loading << " %" << "( " << work_stations << " / " << all_stations << " )" << endl;
+}
+double Nps::Get_work_stations()
+{
+	return work_stations;
 }
 void Nps::Change_n()
 {
@@ -82,4 +90,14 @@ void Nps::Change_n()
 		}
 		}
 	} while (x != 0);
+}
+
+double Nps::Get_all_stations()
+{
+	return all_stations;
+}
+
+double Nps::Get_loading()
+{
+	return loading;
 }

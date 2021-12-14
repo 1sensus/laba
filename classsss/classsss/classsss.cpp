@@ -30,12 +30,12 @@ int main()
 			}
 			case 4:
 			{
-				//Change_pipes();
+				Change_pipes(pipe_umap);
 				break;
 			}
 			case 5:
 			{
-				//Change_npss();
+				Change_npss(nps_umap);
 				break;
 			}
 			case 6:
@@ -50,19 +50,19 @@ int main()
 			}
 			case 8:
 			{
-				//Delete_p();
+				Delete_p(pipe_umap);
 				system("pause");
 				break;
 			}
 			case 9:
 			{
-				//Delete_n();
+				Delete_n(nps_umap);
 				system("pause");
 				break;
 			}
 			case 10:
 			{
-				//All_Filter();
+				All_Filter(pipe_umap,nps_umap);
 				system("pause");
 				break;
 			}

@@ -2,8 +2,6 @@
 #include"H_Nps.h"
 #include"H_pipe.h"
 #include<iostream>
-typedef std::unordered_map<int, Pipe> UMap_p;
-typedef std::unordered_map<int, Nps> UMap_n;
 
 void Main_menu()
 {
@@ -96,13 +94,13 @@ void File_outer(unordered_map<int, Pipe>& pipe_umap,unordered_map<int, Nps>& nps
 		file_out << b << endl;
 		file_out << Pipe::max_id<<endl;
 		file_out << Nps::max_id<<endl;
-		for (UMap_p::iterator it = pipe_umap.begin(); it != pipe_umap.end(); ++it)
+		for (auto&[id,pipe] : pipe_umap)
 		{
-			file_out << (it->second);
+			file_out << pipe;
 		}
-		for (UMap_n::iterator it = nps_umap.begin(); it != nps_umap.end(); ++it)
+		for (auto&[id,nps] : nps_umap)
 		{
-			file_out << (it->second);
+			file_out << nps;
 		}
 
 	}
@@ -135,7 +133,7 @@ void File_reader(unordered_map<int, Pipe>& pipe_umap, unordered_map<int, Nps>& n
 			{
 				Pipe pipe;
 				read_file >> pipe;
-				pipe_umap.emplace(pipe.id,pipe);
+				pipe_umap.emplace(pipe.Get_id(),pipe);
 			}
 			for (int i = 0; i < kol_vo_npss; ++i)
 			{
@@ -146,7 +144,29 @@ void File_reader(unordered_map<int, Pipe>& pipe_umap, unordered_map<int, Nps>& n
 		}cout << "file read" << endl; read_file.close();
 	}
 }
-void Change_pipes(vector<Pipe>& pipe_vec)
+void Change_pipes(unordered_map<int, Pipe>& pipe_umap)
+{
+	cout << "¬ведите левую гранцу диапозона изменени€" << endl;
+	int l_bord = get_digit();
+	cout << "¬ведите правую гранцу диапозона изменени€" << endl;
+	int r_bord = get_digit();
+	while (l_bord > r_bord)
+	{
+		cout << "ќшибка ввода" << endl;
+		cout << "¬ведите левую гранцу диапозона изменени€" << endl;
+		int l_bord = get_digit();
+		cout << "¬ведите правую гранцу диапозона изменени€" << endl;
+		int r_bord = get_digit();
+	}
+	for (int i = l_bord; l_bord <= r_bord; l_bord++)
+	{		
+		for (auto&[id,pipe] : pipe_umap)
+		{
+			if (id == l_bord) { pipe.Change_p(); }
+		}
+	}
+}
+void Change_npss(unordered_map<int, Nps>& nps_umap)
 {
 	cout << "¬ведите левую гранцу диапозона изменени€" << endl;
 	int l_bord = get_digit();
@@ -162,35 +182,13 @@ void Change_pipes(vector<Pipe>& pipe_vec)
 	}
 	for (int i = l_bord; l_bord <= r_bord; l_bord++)
 	{
-		for (auto& p : pipe_vec)
+		for (auto& [id,nps] :nps_umap)
 		{
-			if (p.id == l_bord) { p.Change_p(); }
+			if (id == l_bord) { nps.Change_n(); }
 		}
 	}
 }
-void Change_npss(vector<Nps>& nps_vec)
-{
-	cout << "¬ведите левую гранцу диапозона изменени€" << endl;
-	int l_bord = get_digit();
-	cout << "¬ведите правую гранцу диапозона изменени€" << endl;
-	int r_bord = get_digit();
-	while (l_bord > r_bord)
-	{
-		cout << "ќшибка ввода" << endl;
-		cout << "¬ведите левую гранцу диапозона изменени€" << endl;
-		int l_bord = get_digit();
-		cout << "¬ведите правую гранцу диапозона изменени€" << endl;
-		int r_bord = get_digit();
-	}
-	for (int i = l_bord; l_bord <= r_bord; l_bord++)
-	{
-		for (auto& n : nps_vec)
-		{
-			if (n.id == l_bord) { n.Change_n(); }
-		}
-	}
-}
-void Delete_p(vector<Pipe>& pipe_vec) 
+void Delete_p(unordered_map<int, Pipe>& pipe_umap)
 {
 	cout << "¬ведите левую гранцу диапозона удалени€" << endl;
 	int l_bord = get_digit();
@@ -207,18 +205,17 @@ void Delete_p(vector<Pipe>& pipe_vec)
 	for (int i = l_bord; l_bord <= r_bord; l_bord++)
 	{
 		int j = -1;
-		for (auto& p : pipe_vec)
+		for (auto& [id,pipe] : pipe_umap)
 		{
 			++j;
-			if (p.id == l_bord) {
-				pipe_vec.erase(pipe_vec.begin() + j);				
+			if (id == l_bord) {
+				pipe_umap.erase(l_bord);				
 				break;
 			}
 		}
 	}
-	cout << "Deleted!" << endl << "Razmer spiska: " << pipe_vec.size() << endl;
 }
-void Delete_n(vector<Nps>&nps_vec)
+void Delete_n(unordered_map<int, Nps>& nps_umap)
 	{
 		cout << "¬ведите левую гранцу диапозона удалени€" << endl;
 		int l_bord = get_digit();
@@ -234,44 +231,43 @@ void Delete_n(vector<Nps>&nps_vec)
 		}
 		for (int i = l_bord; l_bord <= r_bord; l_bord++)
 		{
-			int j = -1;
-			for (auto& n : nps_vec)
+			//int j = -1;
+			for (auto& [id,nps] : nps_umap)
 			{
-				++j;
-				if (n.id == l_bord) {
-					nps_vec.erase(nps_vec.begin() + j);
+				//++j;
+				if (id == l_bord) {
+					nps_umap.erase(l_bord);
 					break;
 				}
 			}
 		}
-		cout << "Deleted!" << endl << "Razmer spiska: " << nps_vec.size() << endl;
 	}
 
 //Pipe
 template<typename T>
 using Filter = bool(*)(const Pipe& p, T param);
-bool Check_id_up(const Pipe& p, int param) { return p.id >= param; }
-bool Check_id_down(const Pipe& p, int param) { return p.id <= param; }
-bool Check_lenth_up(const Pipe& p, double param) { return p.lenth >= param; }
-bool Check_lenth_down(const Pipe& p, double param) { return p.lenth <= param; }
-bool Check_diam_up(const Pipe& p, double param) { return p.diam >= param; }
-bool Check_diam_down(const Pipe& p, double param) { return p.diam <= param; }
-bool Check_ready(const Pipe& p, bool param) { return p.ready == param; }
+bool Check_id_up(const Pipe& p, int param) { return p.Get_id() >= param; }
+bool Check_id_down(const Pipe& p, int param) { return p.Get_id() <= param; }
+bool Check_lenth_up(const Pipe& p, double param) { return p.Get_lenth() >= param; }
+bool Check_lenth_down(const Pipe& p, double param) { return p.Get_lenth() <= param; }
+bool Check_diam_up(const Pipe& p, double param) { return p.Get_diam() >= param; }
+bool Check_diam_down(const Pipe& p, double param) { return p.Get_diam() <= param; }
+bool Check_ready(const Pipe& p, bool param) { return p.Get_ready() == param; }
 template<typename T>
-vector <int> FindFilter(const vector<Pipe>& pipe_vec, Filter<T> f, T param)
+vector <int> FindFilter(const unordered_map<int, Pipe>& pipe_umap, Filter<T> f, T param)
 {
 	vector <int> result;
 	int i = 0;
-	for (auto& p : pipe_vec)
+	for (auto& [id,pipe] : pipe_umap)
 	{
-		if (f(p, param))
+		if (f(pipe, param))
 		{
 			result.push_back(i);
 		}++i;
 	}
 	return result;
 }
-void Filter_p(vector<Pipe>& pipe_vec)
+void Filter_p(unordered_map<int, Pipe>& pipe_umap)
 {
 	int var;
 	do {
@@ -284,9 +280,9 @@ void Filter_p(vector<Pipe>& pipe_vec)
 					int id_;
 					cout<<"¬ведите Id(>=)" << endl;
 					cin >> id_;
-					for (int i : FindFilter(pipe_vec, Check_id_up, id_))
+					for (int i : FindFilter(pipe_umap, Check_id_up, id_))
 					{
-						pipe_vec[i].Print();
+						pipe_umap[i].Print();
 					}
 					system("pause");
 					break;
@@ -296,9 +292,9 @@ void Filter_p(vector<Pipe>& pipe_vec)
 					int id_;
 					cout << "¬ведите Id(<=)" << endl;
 					cin >> id_;
-					for (int i : FindFilter(pipe_vec, Check_id_down, id_))
+					for (int i : FindFilter(pipe_umap, Check_id_down, id_))
 					{
-						pipe_vec[i].Print();
+						pipe_umap[i].Print();
 					}
 					system("pause");
 					break;
@@ -308,9 +304,9 @@ void Filter_p(vector<Pipe>& pipe_vec)
 					double lenth_;
 					cout << "¬ведите длину(>=)" << endl;
 					cin >> lenth_;
-					for (int i : FindFilter(pipe_vec, Check_lenth_up, lenth_))
+					for (int i : FindFilter(pipe_umap, Check_lenth_up, lenth_))
 					{
-						pipe_vec[i].Print();
+						pipe_umap[i].Print();
 					}
 					system("pause");
 					break;
@@ -320,9 +316,9 @@ void Filter_p(vector<Pipe>& pipe_vec)
 					double lenth_;
 					cout << "¬ведите длину(<=)" << endl;
 					cin >> lenth_;
-					for (int i : FindFilter(pipe_vec, Check_lenth_down, lenth_))
+					for (int i : FindFilter(pipe_umap, Check_lenth_down, lenth_))
 					{
-						pipe_vec[i].Print();
+						pipe_umap[i].Print();
 					}
 					system("pause");
 					break;
@@ -332,9 +328,9 @@ void Filter_p(vector<Pipe>& pipe_vec)
 					double diam_;
 					cout << "¬ведите диаметр(>=)" << endl;
 					cin >> diam_;
-					for (int i : FindFilter(pipe_vec, Check_diam_up, diam_))
+					for (int i : FindFilter(pipe_umap, Check_diam_up, diam_))
 					{
-						pipe_vec[i].Print();
+						pipe_umap[i].Print();
 					}
 					system("pause");
 					break;
@@ -344,9 +340,9 @@ void Filter_p(vector<Pipe>& pipe_vec)
 					double diam_;
 					cout << "¬ведите диаметр(<=)" << endl;
 					cin >> diam_;
-					for (int i : FindFilter(pipe_vec, Check_diam_down, diam_))
+					for (int i : FindFilter(pipe_umap, Check_diam_down, diam_))
 					{
-						pipe_vec[i].Print();
+						pipe_umap[i].Print();
 					}
 					system("pause");
 					break;
@@ -356,9 +352,9 @@ void Filter_p(vector<Pipe>& pipe_vec)
 					bool ready_;
 					cout << "¬ведите —татус(¬ ремонте = 0)" << endl;
 					cin >> ready_;
-					for (int i : FindFilter(pipe_vec, Check_ready, ready_))
+					for (int i : FindFilter(pipe_umap, Check_ready, ready_))
 					{
-						pipe_vec[i].Print();
+						pipe_umap[i].Print();
 					}
 					system("pause");
 					break;
@@ -378,20 +374,20 @@ bool Check_allstation_count_down(const Nps& n, double param) { return n.all_stat
 bool Check_load_up(const Nps& n, double param) { return n.loading >= param; }
 bool Check_load_down(const Nps& n, double param) { return n.loading <= param; }
 template<typename B>
-vector<int>FindFilte(const vector<Nps>& nps_vec, Filter_<B>f, B param)
+vector<int>FindFilte(const unordered_map<int, Nps>& nps_umap, Filter_<B>f, B param)
 {
 	vector <int> result;
 	int i = 0;
-	for (auto& n : nps_vec)
+	for (auto& [id,nps] : nps_umap)
 	{
-		if (f(n, param))
+		if (f(nps, param))
 		{
 			result.push_back(i);
 		}++i;
 	}
 	return result;
 }
-void Filter_n(vector<Nps>& nps_vec) 
+void Filter_n(unordered_map<int, Nps>& nps_umap)
 {
 	int var;
 	do 
@@ -406,9 +402,9 @@ void Filter_n(vector<Nps>& nps_vec)
 				int id_;
 				cout << "¬ведите Id(>=)" << endl;
 				cin >> id_;
-				for (int i : FindFilte(nps_vec,Check_id_up_n, id_))
+				for (int i : FindFilte(nps_umap,Check_id_up_n, id_))
 				{
-					nps_vec[i].Print();
+					nps_umap[i].Print();
 				}
 				system("pause");
 				break;
@@ -416,7 +412,7 @@ void Filter_n(vector<Nps>& nps_vec)
 		}
 	} while (var != 0);
 }
-void All_Filter(vector<Pipe>& pipe_vec, vector<Nps>& nps_vec)
+void All_Filter(unordered_map<int, Pipe>& pipe_umap,unordered_map<int, Nps>& nps_umap)
 {
 	int var;
 	do 
@@ -426,31 +422,33 @@ void All_Filter(vector<Pipe>& pipe_vec, vector<Nps>& nps_vec)
 		switch (var)
 		{
 			case 1:
-			{Filter_p(pipe_vec); }
+			{Filter_p(pipe_umap); }
 			break;
 			case 2:
-			{Filter_n(nps_vec); }
+			{Filter_n(nps_umap); }
 		}
 	} while (var != 0);
 }
-//typedef std::unordered_map<int, Pipe> UMap_p;
-//typedef std::unordered_map<int, Nps> UMap_n;
+
 void Print_all(unordered_map<int,Pipe>& pipe_umap, unordered_map<int,Nps>& nps_umap)
 {
 	cout << "Pipes->" << endl;
 	//
-	for (UMap_p::iterator it = pipe_umap.begin(); it != pipe_umap.end();++it)
+	for (auto& it: pipe_umap)
 	{
-		it->second.Print();
+		it.second.Print();
 	}
 	cout << "Npss->" << endl;
 	//
-	for (UMap_n::iterator it = nps_umap.begin(); it != nps_umap.end(); ++it) { it->second.Print(); }
+	for (auto& it :nps_umap) 
+	{
+		it.second.Print();
+	}
 	system("pause");
 }
 ostream& operator<<(ostream& out, const Nps& n)
 {
-	out << n.id << endl << n.name << endl << n.work_stations << endl << n.all_stations << endl << n.loading << endl;
+	out << n.Get_id() << endl << n.name << endl << n.work_stations << endl << n.all_stations << endl << n.loading << endl;
 	return out;
 }
 istream& operator>>(istream& in, Nps& n)
