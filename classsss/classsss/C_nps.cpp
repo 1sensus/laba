@@ -37,10 +37,7 @@ void Nps::Print()
 {
 	cout << "Id: " << id << "\tНазвание: " << name << "\tЗагруженность: " << loading << " %" << "( " << work_stations << " / " << all_stations << " )" << endl;
 }
-double Nps::Get_work_stations()
-{
-	return work_stations;
-}
+
 void Nps::Change_n()
 {
 	int x; do
@@ -92,12 +89,21 @@ void Nps::Change_n()
 	} while (x != 0);
 }
 
-double Nps::Get_all_stations()
+double Nps::Get_all_stations()const
 {
 	return all_stations;
 }
 
-double Nps::Get_loading()
+double Nps::Get_loading()const
 {
 	return loading;
+}
+string Nps::Get_name() const
+{
+	return name;
+}
+
+double Nps::Get_work_stations()const
+{
+	return work_stations;
 }

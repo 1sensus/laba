@@ -139,7 +139,7 @@ void File_reader(unordered_map<int, Pipe>& pipe_umap, unordered_map<int, Nps>& n
 			{
 				Nps nps;
 				read_file >> nps;
-				nps_umap.emplace(nps.id,nps);
+				nps_umap.emplace(nps.Get_id(),nps);
 			}break;
 		}cout << "file read" << endl; read_file.close();
 	}
@@ -367,12 +367,12 @@ void Filter_p(unordered_map<int, Pipe>& pipe_umap)
 //Nps
 template<typename B>
 using Filter_= bool(*)(const Nps&, B param);
-bool Check_id_up_n(const Nps& n, int param) { return n.id >= param; }
-bool Check_id_down_n(const Nps& n, int param) { return n.id <= param; }
-bool Check_allstation_count_up(const Nps& n, double param) { return n.all_stations >= param; }
-bool Check_allstation_count_down(const Nps& n, double param) { return n.all_stations <= param; }
-bool Check_load_up(const Nps& n, double param) { return n.loading >= param; }
-bool Check_load_down(const Nps& n, double param) { return n.loading <= param; }
+bool Check_id_up_n(const Nps& n, int param) { return n.Get_id() >= param; }
+bool Check_id_down_n(const Nps& n, int param) { return n.Get_id() <= param; }
+bool Check_allstation_count_up(const Nps& n, double param) { return n.Get_all_stations() >= param; }
+bool Check_allstation_count_down(const Nps& n, double param) { return n.Get_all_stations() <= param; }
+bool Check_load_up(const Nps& n, double param) { return n.Get_loading() >= param; }
+bool Check_load_down(const Nps& n, double param) { return n.Get_loading() <= param; }
 template<typename B>
 vector<int>FindFilte(const unordered_map<int, Nps>& nps_umap, Filter_<B>f, B param)
 {
@@ -403,6 +403,66 @@ void Filter_n(unordered_map<int, Nps>& nps_umap)
 				cout << "¬ведите Id(>=)" << endl;
 				cin >> id_;
 				for (int i : FindFilte(nps_umap,Check_id_up_n, id_))
+				{
+					nps_umap[i].Print();
+				}
+				system("pause");
+				break;
+			}
+		case 2:
+			{
+				int id_;
+				cout << "¬ведите Id(<=)" << endl;
+				cin >> id_;
+				for (int i : FindFilte(nps_umap, Check_id_down_n, id_))
+				{
+					nps_umap[i].Print();
+				}
+				system("pause");
+				break;
+			}
+		case 3:
+			{
+				double all_s;
+				cout << "¬ведите количество станций (>=)" << endl;
+				cin >> all_s;
+				for (int i : FindFilte(nps_umap, Check_allstation_count_up, all_s))
+				{
+					nps_umap[i].Print();
+				}
+				system("pause");
+				break;
+			}
+		case 4:
+			{
+				double all_s;
+				cout << "¬ведите количество станций (<=)" << endl;
+				cin >> all_s;
+				for (int i : FindFilte(nps_umap, Check_allstation_count_down, all_s))
+				{
+					nps_umap[i].Print();
+				}
+				system("pause");
+				break;
+			}
+			case 5:
+			{
+				double load;
+				cout << "¬ведите загруенность (>=)" << endl;
+				cin >> load;
+				for (int i : FindFilte(nps_umap, Check_load_up, load))
+				{
+					nps_umap[i].Print();
+				}
+				system("pause");
+				break;
+			}
+			case 6:
+			{
+				double load;
+				cout << "¬ведите загруенность (<=)" << endl;
+				cin >> load;
+				for (int i : FindFilte(nps_umap, Check_load_down, load))
 				{
 					nps_umap[i].Print();
 				}
@@ -448,7 +508,7 @@ void Print_all(unordered_map<int,Pipe>& pipe_umap, unordered_map<int,Nps>& nps_u
 }
 ostream& operator<<(ostream& out, const Nps& n)
 {
-	out << n.Get_id() << endl << n.name << endl << n.work_stations << endl << n.all_stations << endl << n.loading << endl;
+	out << n.Get_id() << endl << n.Get_name() << endl << n.Get_work_stations() << endl << n.Get_all_stations() << endl << n.Get_loading() << endl;
 	return out;
 }
 istream& operator>>(istream& in, Nps& n)

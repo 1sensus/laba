@@ -16,11 +16,12 @@ public:
 	double Get_work_stations()const;
 	double Get_all_stations()const;
 	double Get_loading()const;
+	string Get_name()const;
+	friend ostream& operator<<(ostream& out, const Nps& n);
+	friend istream& operator>>(istream& in, Nps& n);
 private:
 	int id;
 	double work_stations;
 	double all_stations;
 	double loading;
 };
-ostream& operator<<(ostream& out, const Nps& n);
-istream& operator>>(istream& in, Nps& n);
