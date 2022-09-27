@@ -1,26 +1,29 @@
-﻿  C_nps.cpp
-C:\Users\misar\Desktop\123\RGU\ОС\code\laba\classsss\classsss\C_nps.cpp(48,16): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+﻿  classsss.cpp
+C:\Users\student\Documents\GitHub\laba\classsss\classsss\classsss.cpp(15,16): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  C_pipe.cpp
+C:\Users\student\Documents\GitHub\laba\classsss\classsss\C_pipe.cpp(36,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  C_nps.cpp
+C:\Users\student\Documents\GitHub\laba\classsss\classsss\C_nps.cpp(48,16): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
   General_functions.cpp
-C:\Users\misar\Desktop\123\RGU\ОС\code\laba\classsss\classsss\General_functions.cpp(150,13): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\misar\Desktop\123\RGU\ОС\code\laba\classsss\classsss\General_functions.cpp(152,13): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\misar\Desktop\123\RGU\ОС\code\laba\classsss\classsss\General_functions.cpp(157,14): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\misar\Desktop\123\RGU\ОС\code\laba\classsss\classsss\General_functions.cpp(159,14): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\misar\Desktop\123\RGU\ОС\code\laba\classsss\classsss\General_functions.cpp(172,13): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\misar\Desktop\123\RGU\ОС\code\laba\classsss\classsss\General_functions.cpp(174,13): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\misar\Desktop\123\RGU\ОС\code\laba\classsss\classsss\General_functions.cpp(179,14): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\misar\Desktop\123\RGU\ОС\code\laba\classsss\classsss\General_functions.cpp(181,14): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\misar\Desktop\123\RGU\ОС\code\laba\classsss\classsss\General_functions.cpp(194,13): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\misar\Desktop\123\RGU\ОС\code\laba\classsss\classsss\General_functions.cpp(196,13): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\misar\Desktop\123\RGU\ОС\code\laba\classsss\classsss\General_functions.cpp(201,14): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\misar\Desktop\123\RGU\ОС\code\laba\classsss\classsss\General_functions.cpp(203,14): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\misar\Desktop\123\RGU\ОС\code\laba\classsss\classsss\General_functions.cpp(221,14): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\misar\Desktop\123\RGU\ОС\code\laba\classsss\classsss\General_functions.cpp(223,14): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\misar\Desktop\123\RGU\ОС\code\laba\classsss\classsss\General_functions.cpp(228,15): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\misar\Desktop\123\RGU\ОС\code\laba\classsss\classsss\General_functions.cpp(230,15): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\misar\Desktop\123\RGU\ОС\code\laba\classsss\classsss\General_functions.cpp(275,18): warning C4244: =: преобразование "double" в "int", возможна потеря данных
-C:\Users\misar\Desktop\123\RGU\ОС\code\laba\classsss\classsss\General_functions.cpp(396,18): warning C4244: =: преобразование "double" в "int", возможна потеря данных
-C:\Users\misar\Desktop\123\RGU\ОС\code\laba\classsss\classsss\General_functions.cpp(481,18): warning C4244: =: преобразование "double" в "int", возможна потеря данных
-  classsss.cpp
-C:\Users\misar\Desktop\123\RGU\ОС\code\laba\classsss\classsss\classsss.cpp(15,16): warning C4244: =: преобразование "double" в "int", возможна потеря данных
-  Создание кода...
-  classsss.vcxproj -> C:\Users\misar\Desktop\123\RGU\ОС\code\laba\classsss\Debug\classsss.exe
+C:\Users\student\Documents\GitHub\laba\classsss\classsss\General_functions.cpp(150,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Documents\GitHub\laba\classsss\classsss\General_functions.cpp(152,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Documents\GitHub\laba\classsss\classsss\General_functions.cpp(157,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Documents\GitHub\laba\classsss\classsss\General_functions.cpp(159,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Documents\GitHub\laba\classsss\classsss\General_functions.cpp(172,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Documents\GitHub\laba\classsss\classsss\General_functions.cpp(174,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Documents\GitHub\laba\classsss\classsss\General_functions.cpp(179,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Documents\GitHub\laba\classsss\classsss\General_functions.cpp(181,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Documents\GitHub\laba\classsss\classsss\General_functions.cpp(194,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Documents\GitHub\laba\classsss\classsss\General_functions.cpp(196,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Documents\GitHub\laba\classsss\classsss\General_functions.cpp(201,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Documents\GitHub\laba\classsss\classsss\General_functions.cpp(203,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Documents\GitHub\laba\classsss\classsss\General_functions.cpp(221,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Documents\GitHub\laba\classsss\classsss\General_functions.cpp(223,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Documents\GitHub\laba\classsss\classsss\General_functions.cpp(228,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Documents\GitHub\laba\classsss\classsss\General_functions.cpp(230,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Documents\GitHub\laba\classsss\classsss\General_functions.cpp(275,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Documents\GitHub\laba\classsss\classsss\General_functions.cpp(396,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\student\Documents\GitHub\laba\classsss\classsss\General_functions.cpp(481,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+  LINK : C:\Users\student\Documents\GitHub\laba\classsss\Debug\classsss.exe not found or not built by the last incremental link; performing full link
+  classsss.vcxproj -> C:\Users\student\Documents\GitHub\laba\classsss\Debug\classsss.exe
